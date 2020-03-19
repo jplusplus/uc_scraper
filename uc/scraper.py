@@ -8,6 +8,8 @@ from uc.utils import parse_result_page
 
 BASE_URL = "https://www.uc.se"
 
+MONTHS = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli",
+          "Augusti", "September", "Oktober", "November", "December"]
 
 class UCScraper(BaseScraper):
 
@@ -30,10 +32,10 @@ class UCScraper(BaseScraper):
             soup = dimension.dataset.soup
             for year_opt_group in soup.select("#SelectedValue optgroup"):
                 year = int(year_opt_group.attrs["label"])
-                for i, option in enumerate(reversed(year_opt_group.select("option"))):
+                for option in reversed(year_opt_group.select("option")):
                     month_ix = option.attrs["value"]
                     month = option.text
-                    label = date(year, i+1, 1).strftime("%Y-%m")
+                    label = date(year, MONTHS.index(month) + 1, 1).strftime("%Y-%m")
                     yield DimensionValue(month_ix, dimension, label=label)
         else:
             raise NotImplementedError()
@@ -112,7 +114,6 @@ class UCDataset(Dataset):
     @property
     def latest_month(self):
         """Get the latest available year."""
-
         return self.dimensions["month"].allowed_values[0]
 
 
