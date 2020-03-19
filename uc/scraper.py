@@ -64,7 +64,7 @@ class UCScraper(BaseScraper):
              if since <= x.label and x.label <= to]
 
         for month in months:
-            self.log.info(f"Fecthing data from {month.label}")
+            self.log.info("Fecthing data from {}".format(month.label))
             url = BASE_URL + "/BankruptcyStatisticsCategoryPage/GetStatistics"
             html = self._post_request(url, {"selectedvalue": month.value})
             for res in parse_result_page(html):
