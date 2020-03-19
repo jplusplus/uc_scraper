@@ -45,7 +45,7 @@ Example usage
 
 
 Develop
-------
+-------
 
 Set up:
 
@@ -54,6 +54,12 @@ Set up:
   $ pip install -r requirements.txt
 
 Run tests:
+
+.. code:: bash
+
+  $ make tests
+
+Deploy to pypi (assuming you have Twine installed, if not `pip install twine`)
 
 .. code:: bash
 
