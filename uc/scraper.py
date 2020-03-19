@@ -30,7 +30,7 @@ class UCScraper(BaseScraper):
             soup = dimension.dataset.soup
             for year_opt_group in soup.select("#SelectedValue optgroup"):
                 year = int(year_opt_group.attrs["label"])
-                for i, option in enumerate(year_opt_group.select("option")):
+                for i, option in enumerate(reversed(year_opt_group.select("option"))):
                     month_ix = option.attrs["value"]
                     month = option.text
                     label = date(year, i+1, 1).strftime("%Y-%m")
