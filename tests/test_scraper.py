@@ -36,4 +36,4 @@ class TestUCScraper(TestCase):
     def test_query_time_range(self):
         dataset = self.scraper.items["Kommunstatistik"]
         res = dataset.fetch({"from": "2019-01", "to": "2019-02"})
-        assert res.pandas["month"].unique().tolist() == ["2019-01", "2019-02"]
+        assert res.pandas["month"].unique().tolist() == ["2019-02", "2019-01"]

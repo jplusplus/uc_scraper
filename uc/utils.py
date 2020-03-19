@@ -15,7 +15,8 @@ def parse_result_page(html):
         value_cols = df.columns[1:].tolist()
         df.columns = ["group"] + value_cols
 
-        df_long = pd.melt(df, id_vars="group", value_vars=df.columns[1:], var_name="dimension")
+        df_long = pd.melt(df, id_vars="group", value_vars=df.columns[1:],
+                          var_name="column")
         df_long["value"] = df_long["value"].apply(pct_to_float)
         df_long["grouper"] = grouper
         dfs.append(df_long)

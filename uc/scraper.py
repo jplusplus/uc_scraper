@@ -43,7 +43,7 @@ class UCScraper(BaseScraper):
 
     def _fetch_dimensions(self, dataset):
         yield Dimension("month") # query month 2016-01
-        yield Dimension("dimension") # column name
+        yield Dimension("column") #
         yield Dimension("group") # "Stockholms län"
         yield Dimension("grouper") # "Län"
 
